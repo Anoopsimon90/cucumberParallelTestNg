@@ -6,8 +6,12 @@ import org.testng.annotations.BeforeClass;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@CucumberOptions(glue = "stepdef", plugin = {"json:target/json-cucumber-reports/cukejson.json",
-		"testng:target/testng-cucumber-reports/cuketestng.xml" }, features = "src/test/resources/feature/")
+@CucumberOptions(glue = "stepdef",
+		plugin = {"json:target/json-cucumber-reports/cukejson.json",
+		"testng:target/testng-cucumber-reports/cuketestng.xml" },
+		features = "src/test/resources/feature/",
+		tags="@loginS"
+		)
 public class Default extends AbstractTestNGCucumberParallelTests {
 	
 	private static long duration;

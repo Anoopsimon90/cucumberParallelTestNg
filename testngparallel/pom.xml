@@ -15,7 +15,13 @@
 		<cucumber.version>4.2.6</cucumber.version>
 		<testng.version>6.14.3</testng.version>
 	</properties>
-
+	<repositories>
+		<repository>
+			<id>data-local</id>
+			<name>data</name>
+			<url>file://${project.basedir}/lib</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -34,6 +40,11 @@
 			<artifactId>cucumber-testng</artifactId>
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.141.59</version>
 		</dependency>
 	</dependencies>
 
@@ -57,11 +68,11 @@
 
 								<!-- UNCOMMENT BELOW LINE - To execute feature files with a single 
 									runner -->
-								<!-- <include>**/Default.java</include> -->
+								 <include>**/Default.java</include>
 
 								<!-- UNCOMMENT BELOW LINE - To execute feature files with multiple 
 									runners -->
-								<include>**/*Runner.java</include>
+								<!--<include>**/*Runner.java</include>-->
 							</includes>
 
 							<!-- OPTIONAL UNCOMMENT BELOW 6 LINES - To set data provider thread count value.

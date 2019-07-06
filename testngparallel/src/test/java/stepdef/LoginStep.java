@@ -18,28 +18,31 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class LoginStep {
 
+    TestContext testContext;
     ExtentTest test;
+    public  LoginStep(TestContext testContext)
+    {
+        System.out.println("Login Constructor");
+        this.testContext = testContext;
+    }
+
 
     @Given("I login to application")
     public void i_login_to_application()
     {
         ExtentTest testCase= new ReportUtil().startTest("TC1"+ ThreadLocalRandom.current().nextInt(0, 100));
         testCase.log(LogStatus.PASS, "Login to App");
-        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/lib/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        testContext.openBrowser();
        // driver.get("http://www.bing.com");
         testCase.log(LogStatus.PASS,testCase.addBase64ScreenShot(imageToBase64("C:\\Users\\P756983.AURDEV\\Documents\\dev\\EndToEndCardsAutomation\\HtmlOutput\\BlockCardConfirm.png")));
 
-        driver.quit();
         ReportUtil.testreporters.endTest(testCase);
     }
     private String imageToBase64(String filePath)
     {
        try {
            byte[] fileContent = FileUtils.readFileToByteArray(new File(filePath));
-           String encodedString = Base64.getEncoder().encodeToString(fileContent);
-           System.out.println(  encodedString);
-           return  "data:image/png;base64,"+encodedString;
+           return  "data:image/png;base64,"+Base64.getEncoder().encodeToString(fileContent);
        }catch (Exception e)
        {
 

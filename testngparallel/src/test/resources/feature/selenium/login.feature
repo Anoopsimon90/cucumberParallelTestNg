@@ -3,6 +3,7 @@ Feature: Login
   @loginS
   Scenario Outline: LoginToApp
     Given I login to application
+    And I close application
     Examples:
       |a|
       |1 |
